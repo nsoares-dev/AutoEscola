@@ -1,0 +1,36 @@
+﻿@model AutoEscola2.Models.Cliente
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Dados de @Html.DisplayNameFor(model => model.NomeCliente)</h1>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeCliente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomeCliente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Turma)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Turma)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AprovadoDetran)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AprovadoDetran)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.ClienteId">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>

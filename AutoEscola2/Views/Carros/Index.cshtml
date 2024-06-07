@@ -1,0 +1,73 @@
+﻿@model IEnumerable<AutoEscola2.Models.Carro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Carros</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar novo Carro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCarro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModeloCarro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ano)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Placa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JaReservado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeCarro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModeloCarro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Placa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cor)
+                </td>
+                <td>
+                    @if (item.JaReservado == true)
+                    {
+                        <b>Sim</b>
+                    }
+                    else
+                    {
+                        <b>Não</b>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CarroId">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.CarroId">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CarroId">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

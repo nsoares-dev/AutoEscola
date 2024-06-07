@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AutoEscola2.Models.Reserva>
+
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h1>Reserva</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar nova Reserva</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservador.NomeCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarroReservado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataReserva)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @if (item.Reservador.AprovadoDetran)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reservador.NomeCliente)
+                    </td>
+                    @if (item.CarroReservado.JaReservado == false)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CarroReservado.NomeCarro)
+                        </td>
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataReserva)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ReservaId">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.ReservaId">Detalhes</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ReservaId">Excluir</a>
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AutoEscola2.Models.Cliente>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Clientes</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Turma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AprovadoDetran)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Turma)
+                </td>
+                <td>
+                    @if (item.AprovadoDetran == true)
+                    {
+                        <b>Sim</b>
+                    }
+                    else
+                    {
+                        <b>Não</b>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ClienteId">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.ClienteId">Dados</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ClienteId">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
